@@ -42,3 +42,10 @@ func (s *StringSet) Slice() (keys []string) {
 	defer s.mux.RUnlock()
 	return s.m.Slice()
 }
+
+// Len will return the length of the string set
+func (s *StringSet) Len() int {
+	s.mux.RLock()
+	defer s.mux.RUnlock()
+	return len(s.m)
+}
